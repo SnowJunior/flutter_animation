@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:real_estate/components/card_item.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -7,6 +8,13 @@ class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
+
+const availableHouses = [
+  {"image": 'assets/image2.jpg', "text": 'Gladkova St., 25'},
+  {"image": 'assets/image3.jpg', "text": 'Gunbina St., 11'},
+  {"image": 'assets/image5.jpg', "text": 'Trefoleva St., 43'},
+  {"image": 'assets/image6.jpg', "text": 'Sedova St., 22'},
+];
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
@@ -80,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const Text(
                 'Hi Marina',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-              ),
+              ).animate().fade(duration: 300.ms).show(delay: 1000.ms),
               const SizedBox(
                 height: 10,
               ),
@@ -89,7 +97,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(
                   fontSize: 32,
                 ),
-              ),
+              )
+                  .animate()
+                  .fadeIn(
+                    duration: 500.ms,
+                    curve: Curves.easeIn,
+                    begin: 0.0,
+                  )
+                  .slideY(begin: -1.0, end: 0.0, delay: 1500.ms),
               const SizedBox(
                 height: 10,
               ),
@@ -115,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                     ),
-                  ),
+                  ).animate().fade(duration: 1200.ms).scale(delay: 1700.ms),
                   const SizedBox(
                     width: 20,
                   ),
@@ -140,23 +155,39 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                     ),
-                  ),
+                  ).animate().fade(duration: 1200.ms).scale(delay: 1700.ms),
                 ],
               ),
               Expanded(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                      ),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 7.0),
+                      child: Column(
+                        children: [
+                          HouseItem(imageUrl: '', houseName: '',),
+                        ],
+                      ),
                     ),
                   ),
-                  child: Column(
-                    children: [Container()],
-                  ),
                 ),
-              ),
+              )
+                  .animate()
+                  .fadeIn(duration: 2000.ms, curve: Curves.easeIn, begin: 0.0)
+                  .slide(
+                    begin: const Offset(0.0, 1.0),
+                    end: Offset.zero,
+                    curve: Curves.easeIn,
+                    delay: 2500.ms,
+                  ),
             ],
           ),
         ),
