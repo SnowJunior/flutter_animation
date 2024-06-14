@@ -169,11 +169,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         topRight: Radius.circular(20),
                       ),
                     ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 7.0),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 7.0),
                       child: Column(
                         children: [
-                          HouseItem(imageUrl: '', houseName: '',),
+                          ListView.builder(
+                            itemCount: availableHouses.length,
+                            itemBuilder: (context, index) {
+                              final item = availableHouses[index];
+                              return HouseItem(imageUrl: item["image"], houseName: item["text"]);
+                            } 
+                          ),
+                          const HouseItem(
+                            imageUrl: '',
+                            houseName: '',
+                          ),
                         ],
                       ),
                     ),

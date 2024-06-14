@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 
-class HouseItem extends StatefulWidget {
+class HouseItem extends StatelessWidget {
   final String imageUrl;
   final String houseName;
   const HouseItem({super.key, required this.imageUrl, required this.houseName});
 
-  @override
-  State<HouseItem> createState() => _HouseItemState();
-}
-
-class _HouseItemState extends State<HouseItem> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -23,7 +18,7 @@ class _HouseItemState extends State<HouseItem> {
             borderRadius: BorderRadius.circular(20),
             child: Column(
               children: [
-                Image.asset('assets/image2.jpg'),
+                Image.asset(imageUrl),
               ],
             ),
           ),
@@ -43,10 +38,11 @@ class _HouseItemState extends State<HouseItem> {
                       borderRadius: BorderRadius.circular(20),
                       color: const Color(0xffD2DAD6).withOpacity(.8),
                     ),
-                    child: const Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        CircleAvatar(
+                        Text(houseName),
+                        const CircleAvatar(
                           backgroundColor: Colors.white,
                           child: Icon(
                             Icons.arrow_forward_ios,
