@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class HouseItem extends StatelessWidget {
   final String imageUrl;
   final String houseName;
-  const HouseItem({super.key, required this.imageUrl, required this.houseName});
+  const HouseItem({super.key, required this.houseName, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class HouseItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             child: Column(
               children: [
-                Image.asset(imageUrl),
+                SizedBox(width: 350, child: Image.asset(imageUrl)),
               ],
             ),
           ),
@@ -38,11 +39,10 @@ class HouseItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       color: const Color(0xffD2DAD6).withOpacity(.8),
                     ),
-                    child: Row(
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(houseName),
-                        const CircleAvatar(
+                         CircleAvatar(
                           backgroundColor: Colors.white,
                           child: Icon(
                             Icons.arrow_forward_ios,
@@ -57,6 +57,17 @@ class HouseItem extends StatelessWidget {
             },
           ),
         ),
+        Positioned(
+          left: 100,
+          bottom: 28,
+          child: Text(
+            houseName,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+            ),
+          ).animate().slide(duration: 500.ms).scale(delay: 4000.ms),
+        )
       ],
     );
   }
