@@ -65,7 +65,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   )
                       .animate()
                       .fadeIn(
-                          duration: 500.ms, curve: Curves.easeIn, begin: 0.0)
+                          duration: 500.ms,
+                          curve: Curves.easeIn,
+                          begin: 0.0)
                       .slide(
                         delay: 400.ms,
                         curve: Curves.easeIn,
@@ -79,7 +81,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         'assets/professionalImage.jpeg',
                       ),
                     ),
-                  ).animate().slide(duration: 500.ms).scale(delay: 500.ms),
+                  )
+                      .animate()
+                      .slide(duration: 500.ms)
+                      .scale(delay: 500.ms),
                 ],
               ),
               const SizedBox(
@@ -87,7 +92,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const Text(
                 'Hi Marina',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                style:
+                    TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               ).animate().fade(duration: 300.ms).show(delay: 1000.ms),
               const SizedBox(
                 height: 10,
@@ -130,7 +136,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                     ),
-                  ).animate().fade(duration: 1200.ms).scale(delay: 1700.ms),
+                  )
+                      .animate()
+                      .fade(duration: 1200.ms)
+                      .scale(delay: 1700.ms),
                   const SizedBox(
                     width: 20,
                   ),
@@ -155,7 +164,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                     ),
-                  ).animate().fade(duration: 1200.ms).scale(delay: 1700.ms),
+                  )
+                      .animate()
+                      .fade(duration: 1200.ms)
+                      .scale(delay: 1700.ms),
                 ],
               ),
               Expanded(
@@ -175,12 +187,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         children: [
                           ListView.builder(
-                            itemCount: availableHouses.length,
-                            itemBuilder: (context, index) {
-                              final item = availableHouses[index];
-                              return HouseItem(imageUrl: item["image"], houseName: item["text"]);
-                            } 
-                          ),
+                              itemCount: availableHouses.length,
+                              itemBuilder: (context, index) {
+                                final item = availableHouses[index];
+                                return const Placeholder();
+                              }),
                           const HouseItem(
                             imageUrl: '',
                             houseName: '',
